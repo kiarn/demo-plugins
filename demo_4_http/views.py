@@ -1,7 +1,7 @@
 import time
 from jadi import component
 
-from aj.api.http import url, HttpPlugin
+from aj.api.http import get, HttpPlugin
 
 from aj.api.endpoint import endpoint, EndpointError, EndpointReturn
 
@@ -11,7 +11,7 @@ class Handler(HttpPlugin):
     def __init__(self, context):
         self.context = context
 
-    @url(r'/api/demo4/calculate/(?P<operation>\w+)/(?P<a>\d+)/(?P<b>\d+)')
+    @get(r'/api/demo4/calculate/(?P<operation>\w+)/(?P<a>\d+)/(?P<b>\d+)')
     @endpoint(api=True)
     def handle_api_calculate(self, http_context, operation=None, a=None, b=None):
         start_time = time.time()
